@@ -24,7 +24,8 @@
     "@salesforce-ux/design-system": "^2.2.2",
     "babel-polyfill": "^6.23.0",
     "classnames": "^2.2.5",
-    "preact": "^7.2.0"
+    "preact": "^7.2.0",
+    "svg4everybody": "^2.1.7"
   },
   "main": "lib/index.js"
 }
