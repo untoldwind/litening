@@ -1,4 +1,4 @@
-import {h, Component, cloneElement} from 'preact';
+import {h, Component, cloneElement,} from 'preact';
 import classnames from 'classnames';
 
 export function Grid({
@@ -7,7 +7,7 @@ export function Grid({
     vertical,
     children,
     tag,
-    ...props
+    ...props,
 }) {
     const gridClassNames = classnames(className, 'slds-grid', vertical
         ? 'slds-grid--vertical'
@@ -23,10 +23,12 @@ export function Grid({
 }
 
 function adjustCols(colNum, large) {
-  if (colNum > 6) {
-    return large ? 12 : 6;
-  }
-  return colNum;
+    if (colNum > 6) {
+        return large
+            ? 12
+            : 6;
+    }
+    return colNum;
 }
 
 export function Col({
@@ -47,7 +49,7 @@ export function Col({
     totalColsMedium,
     totalColsLarge,
     children,
-    ...props
+    ...props,
 }) {
     const rowClassNames = classnames(className, padded
         ? `slds-col--padded${ /^ (medium | large)$ /.test(padded)
@@ -83,15 +85,17 @@ export function Col({
 
 export class Row extends Component {
     renderColumn(colProps, child) {
-      console.log(child);
+        console.log(child);
         if (child.nodeName !== Col) {
             return <Col { ...colProps }>{child}</Col>;
         }
 
-        const childProps = Object.keys(colProps).reduce((cprops, key) => {
-            cprops[key] = child.attributes[key] || colProps[key];
-            return cprops;
-        }, {});
+        const childProps = Object
+            .keys(colProps)
+            .reduce((cprops, key) => {
+                cprops[key] = child.attributes[key] || colProps[key];
+                return cprops;
+            }, {});
         return cloneElement(child, childProps);
     }
 
@@ -108,7 +112,7 @@ export class Row extends Component {
         colsLarge,
         pullPadded,
         children,
-        ...props
+        ...props,
     }) {
         const rowClassNames = classnames(className, 'slds-grid', align
             ? `slds-grid--align-${align}`
@@ -128,7 +132,7 @@ export class Row extends Component {
             totalCols,
             totalColsSmall: colsSmall || totalCols,
             totalColsMedium: colsMedium || totalCols,
-            totalColsLarge: colsLarge || totalCols
+            totalColsLarge: colsLarge || totalCols,
         };
         return (
             <div className={rowClassNames} { ...props }>

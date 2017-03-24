@@ -17,12 +17,16 @@ export function registerStyle(styleName, rules) {
     style = document.createElement('style');
     style.id = styleId;
     style.appendChild(document.createTextNode(''));
-    document.documentElement.appendChild(style);
+    document
+        .documentElement
+        .appendChild(style);
     for (const ruleSet of rules) {
         const declaration = ruleSet.pop();
         let selectors = ruleSet;
         selectors = selectors.concat(selectors.map(s => `.slds ${s}`));
         const rule = `${selectors.join(', ')} ${declaration}`;
-        style.sheet.insertRule(rule, 0);
+        style
+            .sheet
+            .insertRule(rule, 0);
     }
 }

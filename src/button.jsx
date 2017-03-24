@@ -1,17 +1,25 @@
-import {h, Component, cloneElement} from 'preact';
+import {h, Component, cloneElement,} from 'preact';
 import classnames from 'classnames';
 import Icon from './icon';
 
 export class Button extends Component {
     constructor() {
         super();
-        this.onClick = this.onClick.bind(this);
-        this.renderIcon = this.renderIcon.bind(this);
-        this.renderIconMore = this.renderIconMore.bind(this);
+        this.onClick = this
+            .onClick
+            .bind(this);
+        this.renderIcon = this
+            .renderIcon
+            .bind(this);
+        this.renderIconMore = this
+            .renderIconMore
+            .bind(this);
     }
 
     onClick(e) {
-        this.node.focus();
+        this
+            .node
+            .focus();
         const {onClick} = this.props;
         if (onClick) {
             onClick(e);
@@ -19,13 +27,19 @@ export class Button extends Component {
     }
 
     renderIcon(iconSize, inv) {
-        const {icon, iconAlign, type} = this.props;
+        const {icon, iconAlign, type,} = this.props;
         const inverse = inv || /\-?inverse$/.test(type);
         return <ButtonIcon icon={icon} align={iconAlign} size={iconSize} inverse={inverse}/>;
     }
 
     renderIconMore() {
-        const {iconMore, icon, iconAlign, label, children} = this.props;
+        const {
+            iconMore,
+            icon,
+            iconAlign,
+            label,
+            children,
+        } = this.props;
         const adjoining = icon && (iconAlign === 'right' || !(label || children));
         const iconMoreSize = this.props.iconMoreSize || adjoining
             ? 'x-small'
@@ -49,7 +63,7 @@ export class Button extends Component {
         htmlType = 'button',
         children,
         buttonRef,
-        ...props
+        ...props,
     }) {
         delete props.inverse;
         const typeClassName = type
@@ -58,7 +72,7 @@ export class Button extends Component {
         const btnClassNames = classnames(className, 'slds-button', typeClassName, {
             'slds-is-selected': selected,
             [`slds-button--${size}`]: size && !/^icon-/.test(type),
-            [`slds-button--icon-${size}`]: /^(x-small|small)$/.test(size) && /^icon-/.test(type)
+            [`slds-button--icon-${size}`]: /^(x-small|small)$/.test(size) && /^icon-/.test(type),
         });
 
         delete props.component;
@@ -91,11 +105,11 @@ export class Button extends Component {
     }
 }
 
-const BUTTON_SIZES = ['x-small', 'small', 'medium', 'large'];
+const BUTTON_SIZES = ['x-small', 'small', 'medium', 'large',];
 
-const ICON_SIZES = ['x-small', 'small', 'medium', 'large'];
+const ICON_SIZES = ['x-small', 'small', 'medium', 'large',];
 
-const ICON_ALIGNS = ['left', 'right'];
+const ICON_ALIGNS = ['left', 'right',];
 
 export const ButtonIcon = ({
     icon,
@@ -103,7 +117,7 @@ export const ButtonIcon = ({
     size,
     inverse,
     className,
-    ...props
+    ...props,
 }) => {
     const alignClassName = ICON_ALIGNS.indexOf(align) >= 0
         ? `slds-button__icon--${align}`

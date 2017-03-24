@@ -1,20 +1,22 @@
-import {h, Component, cloneElement} from 'preact';
+import {h, Component, cloneElement,} from 'preact';
 import classnames from 'classnames';
 
 export default class Tree extends Component {
     constructor(props) {
         super(props);
-        this.renderTreeNode = this.renderTreeNode.bind(this);
+        this.renderTreeNode = this
+            .renderTreeNode
+            .bind(this);
     }
 
     renderTreeNode(tnode) {
-        const {onNodeClick, onNodeToggle, onNodeLabelClick, toggleOnNodeClick} = this.props;
+        const {onNodeClick, onNodeToggle, onNodeLabelClick, toggleOnNodeClick,} = this.props;
         return cloneElement(tnode, {
             level: 1,
             onNodeClick,
             onNodeToggle,
             onNodeLabelClick,
-            toggleOnNodeClick
+            toggleOnNodeClick,
         });
     }
 
@@ -22,7 +24,7 @@ export default class Tree extends Component {
         className,
         label,
         children,
-        ...props
+        ...props,
     }) {
         const treeClassNames = classnames(className, 'slds-tree-container');
         return (

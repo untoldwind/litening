@@ -1,4 +1,4 @@
-import {h, Component, cloneElement} from 'preact';
+import {h, Component, cloneElement,} from 'preact';
 import classnames from 'classnames';
 import {Button} from './button';
 import Spinner from './spinner';
@@ -9,14 +9,22 @@ export default class TreeNode extends Component {
         this.state = {
             opened: this.props.defaultOpened
         };
-        this.onToggle = this.onToggle.bind(this);
-        this.onLabelClick = this.onLabelClick.bind(this);
-        this.onClick = this.onClick.bind(this);
-        this.renderTreeItem = this.renderTreeItem.bind(this);
+        this.onToggle = this
+            .onToggle
+            .bind(this);
+        this.onLabelClick = this
+            .onLabelClick
+            .bind(this);
+        this.onClick = this
+            .onClick
+            .bind(this);
+        this.renderTreeItem = this
+            .renderTreeItem
+            .bind(this);
     }
 
     onToggle(e) {
-        const {onToggle, onNodeToggle} = this.props;
+        const {onToggle, onNodeToggle,} = this.props;
         if (onToggle) {
             onToggle(e, this.props);
         }
@@ -29,7 +37,7 @@ export default class TreeNode extends Component {
     }
 
     onLabelClick(e) {
-        const {onLabelClick, onNodeLabelClick} = this.props;
+        const {onLabelClick, onNodeLabelClick,} = this.props;
         if (onLabelClick) {
             onLabelClick(e, this.props);
         }
@@ -39,7 +47,7 @@ export default class TreeNode extends Component {
     }
 
     onClick(e) {
-        const {onClick, onNodeClick, toggleOnNodeClick} = this.props;
+        const {onClick, onNodeClick, toggleOnNodeClick,} = this.props;
         if (onClick) {
             onClick(e, this.props);
         }
@@ -61,26 +69,32 @@ export default class TreeNode extends Component {
         isOpened,
         children,
         itemRender,
-        ...props
+        ...props,
     }) {
         const itmClassNames = classnames(className, 'slds-tree__item', {
             'slds-is-open': isOpened,
-            'slds-is-selected': selected
+            'slds-is-selected': selected,
         });
         return (
-            <div className={itmClassNames} onClick={this.onClick.bind(this)} style={{
+            <div className={itmClassNames} onClick={this
+                .onClick
+                .bind(this)} style={{
                 position: 'relative'
             }} { ...props }>
                 {loading
                     ? <Spinner container={false} size='small' className='slds-m-right--x-small' style={{
                             position: 'static',
                             marginTop: 14,
-                            marginLeft: -2
+                            marginLeft: -2,
                         }}/>
                     : !leaf
-                        ? <Button className='slds-m-right--small' aria-controls='' type='icon-bare' icon={icon} iconSize='small' onClick={this.onToggle.bind(this)}/>
+                        ? <Button className='slds-m-right--small' aria-controls='' type='icon-bare' icon={icon} iconSize='small' onClick={this
+                                .onToggle
+                                .bind(this)}/>
                         : null}
-                <a className='slds-truncate' tabIndex={-1} role='presentation' onClick={this.onLabelClick.bind(this)}>
+                <a className='slds-truncate' tabIndex={-1} role='presentation' onClick={this
+                    .onLabelClick
+                    .bind(this)}>
                     {itemRender
                         ? itemRender(itemProps)
                         : label}
@@ -93,8 +107,14 @@ export default class TreeNode extends Component {
     }
 
     renderChildNode(level, tnode) {
-        const {onNodeClick, onNodeToggle, onNodeLabelClick, toggleOnNodeClick} = this.props;
-        return cloneElement(tnode, {level, onNodeClick, onNodeToggle, onNodeLabelClick, toggleOnNodeClick});
+        const {onNodeClick, onNodeToggle, onNodeLabelClick, toggleOnNodeClick,} = this.props;
+        return cloneElement(tnode, {
+            level,
+            onNodeClick,
+            onNodeToggle,
+            onNodeLabelClick,
+            toggleOnNodeClick,
+        });
     }
 
     render({
@@ -103,7 +123,7 @@ export default class TreeNode extends Component {
         leaf,
         level,
         children,
-        ...props
+        ...props,
     }) {
         const isOpened = typeof opened !== 'undefined'
             ? opened
@@ -114,13 +134,13 @@ export default class TreeNode extends Component {
             'slds-nested': !leaf,
             'is-expanded': isOpened,
             'slds-show': isOpened,
-            'slds-hide': !isOpened
+            'slds-hide': !isOpened,
         });
         const itemProps = {
             leaf,
             isOpened,
             children,
-            ...props
+            ...props,
         };
         if (leaf) {
             return (
