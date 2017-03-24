@@ -85,7 +85,6 @@ export function Col({
 
 export class Row extends Component {
     renderColumn(colProps, child) {
-        console.log(child);
         if (child.nodeName !== Col) {
             return <Col { ...colProps }>{child}</Col>;
         }
